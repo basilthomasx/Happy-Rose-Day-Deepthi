@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="heart (1).png">
+    <title>Happy Rose Day, Deepthi! 🌹</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd6ea 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 16px;
+            background: rgba(255, 182, 193, 0.6);
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .heart::before {
+            left: 10px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main container */
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Rose container */
+        .rose-container {
+            margin-bottom: 30px;
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes gentlePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .rose-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            background: white;
+            padding: 10px;
+        }
+        
+        /* Message */
+        .message {
+            font-size: 24px;
+            color: #d63384;
+            font-weight: 400;
+            margin: 20px 0;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Countdown */
+        .countdown-container {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .countdown-title {
+            font-size: 18px;
+            color: #c2185b;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-value {
+            font-size: 36px;
+            font-weight: 600;
+            color: #d63384;
+            background: linear-gradient(135deg, #ff8fab, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            min-width: 60px;
+        }
+        
+        .countdown-label {
+            font-size: 14px;
+            color: #c2185b;
+            margin-top: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        
+        .music-controls {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .music-button {
+            background: linear-gradient(135deg, #ff8fab, #ff6b9d);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .music-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+        }
+        
+        .music-button:active {
+            transform: translateY(0);
+        }
+        
+        .music-info {
+            font-size: 14px;
+            color: #c2185b;
+            font-style: italic;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .rose-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .message {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+            
+            .countdown-value {
+                font-size: 28px;
+                min-width: 50px;
+            }
+            
+            .countdown-label {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    
+    <div class="container">
+        <div class="rose-container">
+            <img src="Im Sorry Love You GIF by Cosytales.gif" alt="Pixel Rose" class="rose-image" id="roseImage">
+        </div>
+        
+        <div class="message">
+           The roses are beautiful, but you are the most beautiful of all. ❤️‍🔥🌹
+        </div>
+        
+        <div class="countdown-container">
+            <div class="countdown-title">Counting down to February 8th ❤️</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">0</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">0</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">0</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">0</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="music-controls">
+            <button class="music-button" id="musicToggle">Play Music</button>
+            <div class="music-info" id="musicInfo">Click to start the music</div>
+        </div>
+        
+        
+        <audio id="bgMusic" loop>
+            <source src="The Ronettes - Be My Baby.flac" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+       
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(heart);
+            
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 13000);
+        }
+        
+       
+        setInterval(createHeart, 800);
+        
+       
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+        
+      
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            let targetDate = new Date(currentYear, 1, 8); 
+            
+           
+            if (now > targetDate) {
+                targetDate = new Date(currentYear + 1, 1, 8);
+            }
+            
+            const diff = targetDate - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            } else {
+                document.getElementById('countdown').innerHTML = '<div class="countdown-value">It\'s Rose Day! 🌹</div>';
+            }
+        }
+        
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Music controls
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicInfo = document.getElementById('musicInfo');
+        let isPlaying = false;
+        
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = 'Play Music';
+                musicInfo.textContent = 'Music paused';
+                isPlaying = false;
+            } else {
+                bgMusic.play().then(() => {
+                    musicToggle.textContent = 'Pause Music';
+                    musicInfo.textContent = 'Music is playing...';
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log('Music play failed:', err);
+                    musicInfo.textContent = 'Click to enable music';
+                });
+            }
+        });
+        
+       
+        const roseImage = document.getElementById('roseImage');
+        roseImage.onerror = function() {
+            
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.style.cssText = `
+                width: 200px;
+                height: 200px;
+                background: radial-gradient(circle, #ff6b9d, #d63384);
+                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+                margin: 0 auto;
+            `;
+            this.parentElement.appendChild(fallback);
+        };
+    </script>
+</body>
+</html>
